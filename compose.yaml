@@ -1,0 +1,13 @@
+services:
+  odoo:
+    image: pablolaudicina/odoo17_nworld
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
