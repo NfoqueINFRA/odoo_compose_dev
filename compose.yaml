@@ -5,9 +5,17 @@ services:
       - db
     ports:
       - "8069:8069"
+    volumes:
+      - ./etc/odoo:/etc/odoo
+      - ./extra-addons:/mnt/extra-addons
+      - ./own-developments:/mnt/own-developments
+    environment:
+      - TZ=Europe/Madrid
   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
+    ports:
+      - 5432:5432
